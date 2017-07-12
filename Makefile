@@ -7,18 +7,15 @@ INSTALL_FILES = \
 	Mono.Cecil.Mdb.dll \
 	Mono.Cecil.Pdb.dll \
 	Vernacular.Catalog.dll \
-	Vernacular.Catalog.dll.mdb \
 	Vernacular.Potato.dll \
-	Vernacular.Potato.dll.mdb \
-	Vernacular.exe \
-	Vernacular.exe.mdb
+	Vernacular.exe
 
 NUNIT_CONSOLE = /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/4.0/nunit-console.exe
 
 all: vernacular
 
 vernacular:
-	xbuild Vernacular.sln
+	msbuild Vernacular.sln /t:Vernacular_Tool
 
 clean:
 	find . -type d -name bin -or -name obj -maxdepth 2 -exec echo rm -rf {} \; -exec rm -rf {} \;
